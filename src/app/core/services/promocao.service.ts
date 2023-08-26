@@ -8,11 +8,14 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PromocaoService {
+
   private apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  public listar(): Observable<Promocao[]> {
-    return this.http.get<Promocao[]>(`${this.apiUrl}promocoes`);
+  listar () : Observable<Promocao[]> {
+    return this.httpClient.get<Promocao[]>(`${this.apiUrl}/promocoes`)
   }
 }
